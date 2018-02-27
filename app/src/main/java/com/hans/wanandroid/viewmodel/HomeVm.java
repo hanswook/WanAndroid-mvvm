@@ -8,7 +8,14 @@ import com.hans.wanandroid.R;
 import com.hans.wanandroid.adapter.MvvmCommonAdapter;
 import com.hans.wanandroid.databinding.ActivityHomeBinding;
 import com.hans.wanandroid.libpack.BaseVM;
+import com.hans.wanandroid.libpack.RetrofitManager;
+import com.hans.wanandroid.model.entity.DataBean;
+import com.hans.wanandroid.model.entity.DatasBean;
+import com.hans.wanandroid.model.entity.WanBean;
 import com.hans.wanandroid.model.mock.MockUser;
+import com.hans.wanandroid.net.WanApi;
+import com.hans.wanandroid.utils.RxUtils;
+import com.njqg.orchard.library_core.net.CommonSubscriber;
 import com.njqg.orchard.library_core.utils.LogUtils;
 
 import java.util.ArrayList;
@@ -22,7 +29,8 @@ import java.util.List;
 
 public class HomeVm extends BaseVM<ActivityHomeBinding> {
 
-    private List<MockUser> datas;
+    private List<DatasBean> datas;
+    private MvvmCommonAdapter commonAdapter;
 
     public HomeVm(Context context, ActivityHomeBinding viewBinding) {
         super(context, viewBinding);
@@ -31,8 +39,8 @@ public class HomeVm extends BaseVM<ActivityHomeBinding> {
     @Override
     protected void init() {
         initData();
-        MvvmCommonAdapter commonAdapter = new MvvmCommonAdapter(context
-                , datas, R.layout.home_list_layout, BR.muvm);
+        commonAdapter = new MvvmCommonAdapter(context
+                , datas, R.layout.home_list_layout, BR.dbvm);
         viewBinding.homeRecy.setAdapter(commonAdapter);
         viewBinding.homeRecy.setLayoutManager(new LinearLayoutManager(context));
 
@@ -40,17 +48,22 @@ public class HomeVm extends BaseVM<ActivityHomeBinding> {
 
     private void initData() {
         datas = new ArrayList<>();
-        datas.add(new MockUser("路人甲", 18, true));
-        datas.add(new MockUser("苦逼乙", 25, true));
-        datas.add(new MockUser("神经丙", 38, true));
-        datas.add(new MockUser("目不识丁", 50, true));
+
     }
 
-    public void show(){
-        datas.get(3).setAge(99);
-        datas.get(3).setName("hans");
-        LogUtils.e(TAG,"age:"+datas.get(3).getAge());
-        LogUtils.e(TAG,"name:"+datas.get(3).getName());
+    public void show() {
+        RetrofitManager.getInstance().create(WanApi.class)
+                .getArticleList(0)
+                .compose(RxUtils.<WanBean<DataBean<DatasBean>>>applySchedulers())
+                .subscribe(new CommonSubscriber<WanBean<DataBean<DatasBean>>>(context) {
+                    @Override
+                    public void onNext(WanBean<DataBean<DatasBean>> dataBeanWanBean) {
+                        if (dataBeanWanBean != null && dataBeanWanBean.getData() != null && dataBeanWanBean.getData().getDatas() != null) {
+                            datas.addAll(dataBeanWanBean.getData().getDatas());
+                        }
+                        commonAdapter.notifyDataSetChanged();
+                    }
+                });
 
     }
 }
