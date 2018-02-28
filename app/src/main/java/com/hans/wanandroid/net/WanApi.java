@@ -1,19 +1,19 @@
 package com.hans.wanandroid.net;
 
-import com.hans.wanandroid.model.entity.BannerBean;
-import com.hans.wanandroid.model.entity.CollectBean;
-import com.hans.wanandroid.model.entity.DataBean;
-import com.hans.wanandroid.model.entity.DatasBean;
-import com.hans.wanandroid.model.entity.FriendBean;
-import com.hans.wanandroid.model.entity.HotkeyBean;
-import com.hans.wanandroid.model.entity.NaviPrimaryBean;
-import com.hans.wanandroid.model.entity.NaviSecondaryBean;
-import com.hans.wanandroid.model.entity.ProjectBean;
-import com.hans.wanandroid.model.entity.ProjectDetailBean;
-import com.hans.wanandroid.model.entity.TreeBean;
-import com.hans.wanandroid.model.entity.TreeChildrenBean;
-import com.hans.wanandroid.model.entity.TreeDetailBean;
-import com.hans.wanandroid.model.entity.WanBean;
+import com.hans.wanandroid.model.pojo.BannerBean;
+import com.hans.wanandroid.model.pojo.CollectBean;
+import com.hans.wanandroid.model.pojo.DataBean;
+import com.hans.wanandroid.model.pojo.DatasBean;
+import com.hans.wanandroid.model.pojo.FriendBean;
+import com.hans.wanandroid.model.pojo.HotkeyBean;
+import com.hans.wanandroid.model.pojo.NaviPrimaryBean;
+import com.hans.wanandroid.model.pojo.NaviSecondaryBean;
+import com.hans.wanandroid.model.pojo.ProjectBean;
+import com.hans.wanandroid.model.pojo.ProjectDetailBean;
+import com.hans.wanandroid.model.pojo.TreeBean;
+import com.hans.wanandroid.model.pojo.TreeChildrenBean;
+import com.hans.wanandroid.model.pojo.TreeDetailBean;
+import com.hans.wanandroid.model.pojo.WanBean;
 
 
 import java.util.List;

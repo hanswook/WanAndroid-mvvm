@@ -1,35 +1,36 @@
-package com.hans.wanandroid.model.entity;
+package com.hans.wanandroid.model.pojo;
 
-import java.util.List;
+import android.view.View;
+import android.widget.Toast;
 
 /**
  * Created by hans
- * date: 2018/2/27 15:48.
+ * date: 2018/2/27 14:38.
  * e-mail: hxxx1992@163.com
  */
 
-public class TreeDetailBean {
-
-
+public class DatasBean {
     /**
      * apkLink :
-     * author : 亦枫
-     * chapterId : 60
-     * chapterName : Android Studio相关
+     * author : 张洋
+     * chapterId : 303
+     * chapterName : 区块链
      * collect : false
      * courseId : 13
      * desc :
      * envelopePic :
-     * id : 2196
-     * link : https://www.jianshu.com/p/985f788fae2c
-     * niceDate : 2018-01-18
+     * id : 2331
+     * link : http://blog.codinglabs.org/articles/bitcoin-mechanism-make-easy.html
+     * niceDate : 2018-02-09
      * origin :
      * projectLink :
-     * publishTime : 1516270173000
-     * title : Android Studio 掌握这些调试技巧，Debug能力不能再高啦
+     * publishTime : 1518169644000
+     * title : 一个故事告诉你比特币的原理及运作机制
      * visible : 1
      * zan : 0
      */
+
+
 
     private String apkLink;
     private String author;
@@ -184,4 +185,7 @@ public class TreeDetailBean {
     public void setZan(int zan) {
         this.zan = zan;
     }
+
+
+
 }

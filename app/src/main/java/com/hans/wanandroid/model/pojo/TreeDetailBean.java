@@ -1,37 +1,39 @@
-package com.hans.wanandroid.model.entity;
-
-import java.util.List;
+package com.hans.wanandroid.model.pojo;
 
 /**
  * Created by hans
- * date: 2018/2/27 16:48.
+ * date: 2018/2/27 15:48.
  * e-mail: hxxx1992@163.com
  */
 
-public class CollectBean {
+public class TreeDetailBean {
+
 
     /**
-     * author : salecoding
-     * chapterId : 294
-     * chapterName : 完整项目
+     * apkLink :
+     * author : 亦枫
+     * chapterId : 60
+     * chapterName : Android Studio相关
+     * collect : false
      * courseId : 13
-     * desc : 基于Material Design + MVP + RxJava + Retrofit的一个内容阅读客户端
-     * envelopePic : http://www.wanandroid.com/blogimgs/90d4268c-9713-47d2-b9c0-2d992b9ff942.png
-     * id : 3253
-     * link : http://www.wanandroid.com/blog/show/2054
-     * niceDate : 刚刚
+     * desc :
+     * envelopePic :
+     * id : 2196
+     * link : https://www.jianshu.com/p/985f788fae2c
+     * niceDate : 2018-01-18
      * origin :
-     * originId : 2412
-     * publishTime : 1519720975000
-     * title : 微阅读客户端WeRead
-     * userId : 3255
-     * visible : 0
+     * projectLink :
+     * publishTime : 1516270173000
+     * title : Android Studio 掌握这些调试技巧，Debug能力不能再高啦
+     * visible : 1
      * zan : 0
      */
 
+    private String apkLink;
     private String author;
     private int chapterId;
     private String chapterName;
+    private boolean collect;
     private int courseId;
     private String desc;
     private String envelopePic;
@@ -39,12 +41,19 @@ public class CollectBean {
     private String link;
     private String niceDate;
     private String origin;
-    private int originId;
+    private String projectLink;
     private long publishTime;
     private String title;
-    private int userId;
     private int visible;
     private int zan;
+
+    public String getApkLink() {
+        return apkLink;
+    }
+
+    public void setApkLink(String apkLink) {
+        this.apkLink = apkLink;
+    }
 
     public String getAuthor() {
         return author;
@@ -68,6 +77,14 @@ public class CollectBean {
 
     public void setChapterName(String chapterName) {
         this.chapterName = chapterName;
+    }
+
+    public boolean isCollect() {
+        return collect;
+    }
+
+    public void setCollect(boolean collect) {
+        this.collect = collect;
     }
 
     public int getCourseId() {
@@ -126,12 +143,12 @@ public class CollectBean {
         this.origin = origin;
     }
 
-    public int getOriginId() {
-        return originId;
+    public String getProjectLink() {
+        return projectLink;
     }
 
-    public void setOriginId(int originId) {
-        this.originId = originId;
+    public void setProjectLink(String projectLink) {
+        this.projectLink = projectLink;
     }
 
     public long getPublishTime() {
@@ -148,14 +165,6 @@ public class CollectBean {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public int getVisible() {

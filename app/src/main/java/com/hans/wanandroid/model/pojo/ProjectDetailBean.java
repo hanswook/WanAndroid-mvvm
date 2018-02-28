@@ -1,33 +1,34 @@
-package com.hans.wanandroid.model.entity;
+package com.hans.wanandroid.model.pojo;
 
 /**
  * Created by hans
- * date: 2018/2/27 14:38.
+ * date: 2018/2/27 16:04.
  * e-mail: hxxx1992@163.com
  */
 
-public class DatasBean {
+public class ProjectDetailBean {
+
     /**
      * apkLink :
-     * author : 张洋
-     * chapterId : 303
-     * chapterName : 区块链
+     * author : salecoding
+     * chapterId : 294
+     * chapterName : 完整项目
      * collect : false
      * courseId : 13
-     * desc :
-     * envelopePic :
-     * id : 2331
-     * link : http://blog.codinglabs.org/articles/bitcoin-mechanism-make-easy.html
-     * niceDate : 2018-02-09
+     * desc : Try to build a www.wanandroid.com client。
+     * <p>
+     * <p>
+     * envelopePic : http://www.wanandroid.com/blogimgs/9f3befc5-562e-4061-804a-45859b233b38.png
+     * id : 2404
+     * link : http://www.wanandroid.com/blog/show/2047
+     * niceDate : 6小时前
      * origin :
-     * projectLink :
-     * publishTime : 1518169644000
-     * title : 一个故事告诉你比特币的原理及运作机制
-     * visible : 1
+     * projectLink : https://github.com/salecoding/WanAndroid
+     * publishTime : 1519695915000
+     * title : 开源WanAndroid客户端 Java版本
+     * visible : 0
      * zan : 0
      */
-
-
 
     private String apkLink;
     private String author;

@@ -1,23 +1,22 @@
-package com.hans.wanandroid.model.entity;
+package com.hans.wanandroid.model.pojo;
 
 import java.util.List;
 
 /**
  * Created by hans
- * date: 2018/2/27 16:01.
+ * date: 2018/2/27 15:45.
  * e-mail: hxxx1992@163.com
  */
 
-public class ProjectBean {
-
+public class TreeChildrenBean {
     /**
      * children : []
      * courseId : 13
-     * id : 294
-     * name : 完整项目
-     * order : 145000
-     * parentChapterId : 293
-     * visible : 0
+     * id : 60
+     * name : Android Studio相关
+     * order : 1000
+     * parentChapterId : 150
+     * visible : 1
      */
 
     private int courseId;

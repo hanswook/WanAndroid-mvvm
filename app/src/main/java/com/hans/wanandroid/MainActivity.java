@@ -1,15 +1,12 @@
 package com.hans.wanandroid;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.hans.wanandroid.databinding.ActivityMainBinding;
 import com.hans.wanandroid.libpack.BaseActivity;
 import com.hans.wanandroid.libpack.RetrofitManager;
-import com.hans.wanandroid.model.entity.BannerBean;
-import com.hans.wanandroid.model.entity.DataBean;
-import com.hans.wanandroid.model.entity.DatasBean;
-import com.hans.wanandroid.model.entity.WanBean;
+import com.hans.wanandroid.model.pojo.BannerBean;
+import com.hans.wanandroid.model.pojo.DataBean;
+import com.hans.wanandroid.model.pojo.DatasBean;
+import com.hans.wanandroid.model.pojo.WanBean;
 import com.hans.wanandroid.net.WanApi;
 import com.hans.wanandroid.utils.Constant;
 import com.hans.wanandroid.utils.RxUtils;

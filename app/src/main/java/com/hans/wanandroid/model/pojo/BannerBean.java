@@ -1,6 +1,4 @@
-package com.hans.wanandroid.model.entity;
-
-import java.util.List;
+package com.hans.wanandroid.model.pojo;
 
 /**
  * Created by hans

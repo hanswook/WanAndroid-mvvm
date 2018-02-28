@@ -1,4 +1,4 @@
-package com.hans.wanandroid.model.entity;
+package com.hans.wanandroid.model.pojo;
 
 /**
  * Created by hans

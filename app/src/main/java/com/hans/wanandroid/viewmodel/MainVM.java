@@ -6,12 +6,11 @@ import com.hans.wanandroid.MainActivity;
 import com.hans.wanandroid.databinding.ActivityMainBinding;
 import com.hans.wanandroid.libpack.BaseVM;
 import com.hans.wanandroid.libpack.RetrofitManager;
-import com.hans.wanandroid.model.entity.CollectBean;
-import com.hans.wanandroid.model.entity.DataBean;
-import com.hans.wanandroid.model.entity.WanBean;
+import com.hans.wanandroid.model.pojo.CollectBean;
+import com.hans.wanandroid.model.pojo.DataBean;
+import com.hans.wanandroid.model.pojo.WanBean;
 import com.hans.wanandroid.net.WanApi;
 import com.hans.wanandroid.utils.RxUtils;
-import com.njqg.orchard.library_core.base.BaseImpl;
 import com.njqg.orchard.library_core.net.DefaultObserver;
 import com.njqg.orchard.library_core.utils.LogUtils;
 

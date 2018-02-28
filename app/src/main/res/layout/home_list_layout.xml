@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="dbvm"
-            type="com.hans.wanandroid.model.entity.DatasBean" />
+            name="hlm"
+            type="com.hans.wanandroid.model.model.HomeListModel" />
     </data>
 
     <android.support.v7.widget.CardView
@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="50dp"
+            android:onClick="@{(v)->hlm.getOnItemListener(v)}"
             android:orientation="vertical"
             android:paddingLeft="10dp">
 
@@ -25,7 +26,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
-                android:text="@{dbvm.title}"
+                android:onClick="@{()->hlm.showBtn1()}"
+                android:text="@{hlm.title}"
                 android:textSize="23sp"
                 android:textStyle="bold" />
 
@@ -34,7 +36,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
-                android:text="@{@string/time_author+dbvm.author+@string/item_space+@string/item_time+dbvm.publishTime}" />
+                android:onClick="@{()->hlm.showBtn2()}"
+                android:text="@{hlm.datasBean.niceDate}" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
