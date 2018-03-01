@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cardItemVM"
+            type="com.hans.wanandroid.viewmodel.itemvm.CardItemVM" />
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        app:cardCornerRadius="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="@{(v)->cardItemVM.clickTest(v)}"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:text="@{cardItemVM.articleBean.title}"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="16dp"
+                android:text="@{cardItemVM.articleBean.author}"
+                android:textColor="@color/a88_blue"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="24dp"
+                android:text="@{cardItemVM.articleBean.niceDate}"
+                android:textColor="@color/a88_blue"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:text="@{cardItemVM.articleBean.chapterName}"
+                android:textColor="@color/a88_green"
+                android:textSize="13sp" />
+
+            <com.hans.wanandroid.customizeview.IconFontTextView
+                android:id="@+id/card_item_collect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:onClick="@{(v)->cardItemVM.collect(v)}"
+                android:text="@string/ic_collect_nor"
+                android:textSize="50px" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+</layout>
