@@ -19,8 +19,7 @@
     <color name="gray_f6">#ffF6F6F6</color>
     <color name="white">#ffFFFFFF</color>
     <color name="black">#ff000000</color>
-    <color name="a88_blue">#880000ff</color>
-    <color name="a88_green">#8800ff00</color>
+
     <color name="aLightGray">#50999999</color>
 
 </resources>

@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="cardItemVM"
-            type="com.hans.wanandroid.viewmodel.itemvm.CardItemVM" />
+            name="collectionItemVM"
+            type="com.hans.wanandroid.viewmodel.itemvm.CollectionItemVM" />
 
     </data>
 
@@ -21,7 +21,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="@{(v)->cardItemVM.clickTest(v)}"
+            android:onClick="@{(v)->collectionItemVM.clickTest(v)}"
             android:orientation="vertical">
 
             <TextView
@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="16dp"
-                android:text="@{cardItemVM.articleBean.title}"
+                android:text="@{collectionItemVM.collectBean.title}"
                 android:textSize="17sp" />
 
             <TextView
@@ -38,7 +38,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="8dp"
                 android:layout_marginLeft="16dp"
-                android:text="@{cardItemVM.articleBean.author}"
+                android:text="@{collectionItemVM.collectBean.author}"
                 android:textColor="@color/a88_blue"
                 android:textSize="13sp" />
 
@@ -49,7 +49,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="8dp"
                 android:layout_marginRight="24dp"
-                android:text="@{cardItemVM.articleBean.niceDate}"
+                android:text="@{collectionItemVM.collectBean.niceDate}"
                 android:textColor="@color/a88_blue"
                 android:textSize="13sp" />
 
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="4dp"
-                android:text="@{cardItemVM.articleBean.chapterName}"
+                android:text="@{collectionItemVM.collectBean.chapterName}"
                 android:textColor="@color/a88_green"
                 android:textSize="13sp" />
 
@@ -67,9 +67,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:onClick="@{(v)->cardItemVM.collect(v)}"
-                android:text="@{cardItemVM.articleBean.collect?@string/ic_collect_sel:@string/ic_collect_nor}"
-                android:textColor="@{cardItemVM.articleBean.collect?@color/a88_blue:@color/gray_99}"
+                android:onClick="@{(v)->collectionItemVM.collect(v)}"
+                android:text="@{collectionItemVM.isCollect?@string/ic_collect_sel:@string/ic_collect_nor}"
+                android:textColor="@{collectionItemVM.isCollect?@color/a88_blue:@color/gray_99}"
                 android:textSize="50px" />
 
 

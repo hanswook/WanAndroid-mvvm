@@ -14,7 +14,7 @@ import com.hans.wanandroid.libpack.RetrofitManager;
 import com.hans.wanandroid.model.mock.MockUser;
 import com.hans.wanandroid.model.pojo.ArticleBean;
 import com.hans.wanandroid.model.pojo.DataBean;
-import com.hans.wanandroid.model.pojo.ResponseData;
+import com.hans.wanandroid.model.pojo.ResponseBean;
 import com.hans.wanandroid.net.WanApi;
 import com.hans.wanandroid.utils.RxUtils;
 import com.hans.wanandroid.viewmodel.itemvm.CardItemVM;
@@ -91,12 +91,12 @@ public class HomeFVM extends BaseVM<FragmentHomeBinding> {
     public void show() {
         RetrofitManager.getInstance().create(WanApi.class)
                 .getArticleList(0)
-                .compose(RxUtils.<ResponseData<DataBean<ArticleBean>>>applySchedulers())
-                .subscribe(new CommonSubscriber<ResponseData<DataBean<ArticleBean>>>(context) {
+                .compose(RxUtils.<ResponseBean<DataBean<ArticleBean>>>applySchedulers())
+                .subscribe(new CommonSubscriber<ResponseBean<DataBean<ArticleBean>>>(context) {
                     @Override
-                    public void onNext(ResponseData<DataBean<ArticleBean>> dataBeanResponseData) {
-                        if (dataBeanResponseData != null && dataBeanResponseData.getData() != null && dataBeanResponseData.getData().getDatas() != null) {
-                            addListData(dataBeanResponseData.getData().getDatas());
+                    public void onNext(ResponseBean<DataBean<ArticleBean>> dataBeanResponseBean) {
+                        if (dataBeanResponseBean != null && dataBeanResponseBean.getData() != null && dataBeanResponseBean.getData().getDatas() != null) {
+                            addListData(dataBeanResponseBean.getData().getDatas());
                         }
                         commonAdapter.notifyDataSetChanged();
                     }

@@ -30,7 +30,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{()->vm.requestCollect()}"
+            android:onClick="@{()->vm.requestCollectList()}"
             android:text="requestCollect" />
 
         <Button

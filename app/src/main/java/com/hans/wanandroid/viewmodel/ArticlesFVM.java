@@ -11,8 +11,7 @@ import com.hans.wanandroid.databinding.FragmentArticlesBinding;
 import com.hans.wanandroid.libpack.BaseVM;
 import com.hans.wanandroid.libpack.RetrofitManager;
 import com.hans.wanandroid.model.pojo.DataBean;
-import com.hans.wanandroid.model.pojo.ResponseData;
-import com.hans.wanandroid.model.pojo.TreeBean;
+import com.hans.wanandroid.model.pojo.ResponseBean;
 import com.hans.wanandroid.model.pojo.TreeBean;
 import com.hans.wanandroid.model.pojo.ArticleBean;
 import com.hans.wanandroid.net.WanApi;
@@ -61,18 +60,18 @@ public class ArticlesFVM extends BaseVM<FragmentArticlesBinding> {
     private void requestTabsData() {
         RetrofitManager.getInstance().create(WanApi.class)
                 .getTreeList()
-                .compose(RxUtils.<ResponseData<List<TreeBean<TreeBean>>>>applySchedulers())
-                .subscribe(new DefaultObserver<ResponseData<List<TreeBean<TreeBean>>>>(baseImpl) {
+                .compose(RxUtils.<ResponseBean<List<TreeBean<TreeBean>>>>applySchedulers())
+                .subscribe(new DefaultObserver<ResponseBean<List<TreeBean<TreeBean>>>>(baseImpl) {
                     @Override
-                    protected void doOnNext(ResponseData<List<TreeBean<TreeBean>>> listResponseData) {
-                        if (null == listResponseData || listResponseData.getErrorCode() < 0) {
+                    protected void doOnNext(ResponseBean<List<TreeBean<TreeBean>>> listResponseBean) {
+                        if (null == listResponseBean || listResponseBean.getErrorCode() < 0) {
                             return;
                         }
-                        articlesData.addAll(listResponseData.getData());
-                        listResponseData.getData().size();
-                        initPrimaryTabLayout(listResponseData.getData());
-//                        initSecondTabLayout(listResponseData.getData().get(0).getChildren());
-//                        initRecyclerData(listResponseData.getData().get(0).getChildren().get(0));
+                        articlesData.addAll(listResponseBean.getData());
+                        listResponseBean.getData().size();
+                        initPrimaryTabLayout(listResponseBean.getData());
+//                        initSecondTabLayout(listResponseBean.getData().get(0).getChildren());
+//                        initRecyclerData(listResponseBean.getData().get(0).getChildren().get(0));
                     }
                 });
     }
@@ -80,16 +79,16 @@ public class ArticlesFVM extends BaseVM<FragmentArticlesBinding> {
     private void initRecyclerData(TreeBean TreeBean) {
         RetrofitManager.getInstance().create(WanApi.class)
                 .getTreeDetailList(0, TreeBean.getId())
-                .compose(RxUtils.<ResponseData<DataBean<ArticleBean>>>applySchedulers())
-                .subscribe(new DefaultObserver<ResponseData<DataBean<ArticleBean>>>(baseImpl) {
+                .compose(RxUtils.<ResponseBean<DataBean<ArticleBean>>>applySchedulers())
+                .subscribe(new DefaultObserver<ResponseBean<DataBean<ArticleBean>>>(baseImpl) {
                     @Override
-                    protected void doOnNext(ResponseData<DataBean<ArticleBean>> dataBeanResponseData) {
-                        if (isEmpty(dataBeanResponseData)) {
+                    protected void doOnNext(ResponseBean<DataBean<ArticleBean>> dataBeanResponseBean) {
+                        if (isEmpty(dataBeanResponseBean)) {
                             return;
                         }
-                        LogUtils.e(TAG, "initRecyclerData doOnNext dataBeanResponseData size:" + dataBeanResponseData.getData().getDatas().size());
+                        LogUtils.e(TAG, "initRecyclerData doOnNext dataBeanResponseBean size:" + dataBeanResponseBean.getData().getDatas().size());
                         recyclerData.clear();
-                        for (ArticleBean ArticleBean : dataBeanResponseData.getData().getDatas()) {
+                        for (ArticleBean ArticleBean : dataBeanResponseBean.getData().getDatas()) {
                             recyclerData.add(new CardItemVM(ArticleBean));
                         }
                         LogUtils.e(TAG, "recyclerData size：" + recyclerData.size());

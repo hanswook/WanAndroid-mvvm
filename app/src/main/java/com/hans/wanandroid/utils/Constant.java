@@ -18,4 +18,14 @@ public class Constant {
     public static final String SP_NAME = "hans_wanandroid";
     public static final String WEB_DETAIL_URL = "web_detail_url";
 
+    public static final String LOGIN_USER_NAME_COOKIE = "loginUserName";
+    public static final String LOGIN_USER_PASSWORD_COOKIE = "loginUserPassword";
+    public static final String LOGIN_USER_NAME = "userName";
+    public static final String LOGIN_USER_PASSWORD = "userPassword";
+
+
+
+
+    public static boolean isLogin = false;
+
 }

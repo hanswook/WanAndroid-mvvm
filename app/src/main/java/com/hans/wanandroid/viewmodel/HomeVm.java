@@ -8,10 +8,20 @@ import com.hans.wanandroid.R;
 import com.hans.wanandroid.adapter.HomePageAdapter;
 import com.hans.wanandroid.databinding.ActivityHomeBinding;
 import com.hans.wanandroid.libpack.BaseVM;
+import com.hans.wanandroid.libpack.RetrofitManager;
+import com.hans.wanandroid.model.pojo.ResponseBean;
+import com.hans.wanandroid.model.pojo.UserBean;
+import com.hans.wanandroid.net.WanApi;
+import com.hans.wanandroid.utils.Constant;
+import com.hans.wanandroid.utils.RxUtils;
 import com.hans.wanandroid.view.activity.HomeActivity;
 import com.hans.wanandroid.view.fragment.ArticlesFragment;
 import com.hans.wanandroid.view.fragment.HomeFragment;
 import com.hans.wanandroid.view.fragment.UserCenterFragment;
+import com.njqg.orchard.library_core.net.DefaultObserver;
+import com.njqg.orchard.library_core.utils.LogUtils;
+import com.njqg.orchard.library_core.utils.SPUtils;
+import com.njqg.orchard.library_core.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +43,34 @@ public class HomeVm extends BaseVM<ActivityHomeBinding> {
 
     @Override
     protected void init() {
+        initLogin();
         initTabLayout();
         initFragments();
         initViewPager();
 
+    }
+
+    private void initLogin() {
+        String username = SPUtils.getString(Constant.LOGIN_USER_NAME);
+        String password = SPUtils.getString(Constant.LOGIN_USER_PASSWORD);
+        LogUtils.e(TAG, "username:" + username + ",password:" + password);
+
+        RetrofitManager.getInstance().create(WanApi.class)
+                .requestLogin(username, password)
+                .compose(RxUtils.<ResponseBean<UserBean>>applySchedulers())
+                .subscribe(new DefaultObserver<ResponseBean<UserBean>>(baseImpl) {
+                    @Override
+                    protected void doOnNext(ResponseBean<UserBean> userBean) {
+                        LogUtils.e(TAG, "userBean:" + userBean.toString());
+                        if (userBean.getErrorCode() < 0) {
+                            Constant.isLogin = false;
+                            ToastUtils.show("默认登陆失败");
+                        } else {
+                            ToastUtils.show("默认登录成功");
+                            Constant.isLogin = true;
+                        }
+                    }
+                });
     }
 
     private void initTabLayout() {

@@ -26,9 +26,9 @@ public class AddCookiesInterceptor implements Interceptor {
         Request.Builder builder = chain.request().newBuilder();
 
         List<String> cookies = new ArrayList<>();
-        String a = SPUtils.getString(Constant.SP_NAME, "loginUserName");
+        String a = SPUtils.getString(Constant.SP_NAME, Constant.LOGIN_USER_NAME_COOKIE);
         cookies.add(a);
-        String b = SPUtils.getString(Constant.SP_NAME, "loginUserPassword");
+        String b = SPUtils.getString(Constant.SP_NAME, Constant.LOGIN_USER_PASSWORD_COOKIE);
         cookies.add(b);
 
         for (String cookie : cookies) {

@@ -6,7 +6,7 @@ import com.hans.wanandroid.libpack.RetrofitManager;
 import com.hans.wanandroid.model.pojo.BannerBean;
 import com.hans.wanandroid.model.pojo.DataBean;
 import com.hans.wanandroid.model.pojo.ArticleBean;
-import com.hans.wanandroid.model.pojo.ResponseData;
+import com.hans.wanandroid.model.pojo.ResponseBean;
 import com.hans.wanandroid.net.WanApi;
 import com.hans.wanandroid.utils.Constant;
 import com.hans.wanandroid.utils.RxUtils;
@@ -52,14 +52,14 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         RetrofitManager.getInstance().create(WanApi.class)
                 .getBannerList()
 
-                .compose(RxUtils.<ResponseData<List<BannerBean>>>applySchedulers())
-                .subscribe(new DefaultObserver<ResponseData<List<BannerBean>>>(this) {
+                .compose(RxUtils.<ResponseBean<List<BannerBean>>>applySchedulers())
+                .subscribe(new DefaultObserver<ResponseBean<List<BannerBean>>>(this) {
                     @Override
-                    protected void doOnNext(ResponseData<List<BannerBean>> listResponseData) {
-                        LogUtils.e(TAG, "listResponseData getErrorMsg:" + listResponseData.getErrorMsg());
-                        LogUtils.e(TAG, "listResponseData getErrorCode:" + listResponseData.getErrorCode());
-                        if (listResponseData.getData() != null)
-                            LogUtils.e(TAG, "listResponseData getData:" + listResponseData.getData().size());
+                    protected void doOnNext(ResponseBean<List<BannerBean>> listResponseBean) {
+                        LogUtils.e(TAG, "listResponseBean getErrorMsg:" + listResponseBean.getErrorMsg());
+                        LogUtils.e(TAG, "listResponseBean getErrorCode:" + listResponseBean.getErrorCode());
+                        if (listResponseBean.getData() != null)
+                            LogUtils.e(TAG, "listResponseBean getData:" + listResponseBean.getData().size());
 
                     }
                 });
@@ -68,10 +68,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     private void test() {
         RetrofitManager.getInstance().create(WanApi.class)
                 .getArticleList(0)
-                .compose(RxUtils.<ResponseData<DataBean<ArticleBean>>>applySchedulers())
-                .subscribe(new DefaultObserver<ResponseData<DataBean<ArticleBean>>>(this) {
+                .compose(RxUtils.<ResponseBean<DataBean<ArticleBean>>>applySchedulers())
+                .subscribe(new DefaultObserver<ResponseBean<DataBean<ArticleBean>>>(this) {
                     @Override
-                    protected void doOnNext(ResponseData<DataBean<ArticleBean>> datasBean) {
+                    protected void doOnNext(ResponseBean<DataBean<ArticleBean>> datasBean) {
                         LogUtils.e(TAG, "datasBean getErrorMsg:" + datasBean.getErrorMsg());
                         LogUtils.e(TAG, "datasBean getErrorCode:" + datasBean.getErrorCode());
                         if (datasBean != null && datasBean.getData().getDatas() != null)
