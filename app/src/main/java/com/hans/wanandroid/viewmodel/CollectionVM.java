@@ -14,6 +14,7 @@ import com.hans.wanandroid.model.pojo.DataBean;
 import com.hans.wanandroid.model.pojo.ResponseBean;
 import com.hans.wanandroid.net.WanApi;
 import com.hans.wanandroid.utils.RxUtils;
+import com.hans.wanandroid.viewmodel.itemvm.CollectionItemVM;
 import com.njqg.orchard.library_core.net.CommonSubscriber;
 import com.njqg.orchard.library_core.net.DefaultObserver;
 
@@ -28,7 +29,7 @@ import java.util.List;
 
 public class CollectionVM extends BaseVM<ActivityColloectionBinding> {
 
-    private List<CollectBean> collectionDatas;
+    private List<CollectionItemVM> collectionDatas;
     private MvvmCommonAdapter commonAdapter;
 
     public CollectionVM(Context context, ActivityColloectionBinding viewBinding) {
@@ -54,7 +55,9 @@ public class CollectionVM extends BaseVM<ActivityColloectionBinding> {
                         if (isEmpty(dataBeanResponseBean) || isEmpty(dataBeanResponseBean.getData()) || isEmpty(dataBeanResponseBean.getData().getDatas())) {
                             return;
                         }
-                        collectionDatas.addAll(dataBeanResponseBean.getData().getDatas());
+                        for (CollectBean collectBean:dataBeanResponseBean.getData().getDatas()){
+                            collectionDatas.add(new CollectionItemVM(collectBean));
+                        }
                         commonAdapter.notifyDataSetChanged();
                     }
                 });

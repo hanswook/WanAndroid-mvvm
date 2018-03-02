@@ -67,10 +67,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
                 android:onClick="@{(v)->cardItemVM.collect(v)}"
                 android:text="@{cardItemVM.articleBean.collect?@string/ic_collect_sel:@string/ic_collect_nor}"
                 android:textColor="@{cardItemVM.articleBean.collect?@color/a88_blue:@color/gray_99}"
-                android:textSize="50px" />
+                android:textSize="30sp" />
 
 
         </RelativeLayout>

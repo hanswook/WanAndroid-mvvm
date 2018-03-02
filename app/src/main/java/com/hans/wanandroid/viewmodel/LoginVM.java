@@ -13,6 +13,7 @@ import com.hans.wanandroid.model.pojo.UserBean;
 import com.hans.wanandroid.net.WanApi;
 import com.hans.wanandroid.utils.Constant;
 import com.hans.wanandroid.utils.RxUtils;
+import com.hans.wanandroid.view.activity.LoginActivity;
 import com.njqg.orchard.library_core.net.DefaultObserver;
 import com.njqg.orchard.library_core.utils.LogUtils;
 import com.njqg.orchard.library_core.utils.SPUtils;
@@ -56,6 +57,7 @@ public class LoginVM extends BaseVM<ActivityLoginBinding> {
                             Constant.isLogin = true;
                             SPUtils.put(Constant.LOGIN_USER_NAME, account);
                             SPUtils.put(Constant.LOGIN_USER_PASSWORD, password);
+                            ((LoginActivity) context).finish();
                         }
                     }
                 });

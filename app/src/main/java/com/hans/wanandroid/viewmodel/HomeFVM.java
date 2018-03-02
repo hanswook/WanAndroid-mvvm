@@ -46,7 +46,7 @@ public class HomeFVM extends BaseVM<FragmentHomeBinding> {
                 , datas, R.layout.card_item_layout, BR.cardItemVM);
         viewBinding.homefRecy.setAdapter(commonAdapter);
         viewBinding.homefRecy.setLayoutManager(new LinearLayoutManager(context));
-        initViewPager();
+//        initViewPager();
         initRecyclerData();
 
     }
