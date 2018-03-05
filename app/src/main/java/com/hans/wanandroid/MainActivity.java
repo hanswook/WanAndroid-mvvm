@@ -37,15 +37,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     }
 
     private void testLogin() {
-        RetrofitManager.getInstance().create(WanApi.class)
-                .requestLogin("hanswook", "hanxu921001")
-                .compose(RxUtils.applySchedulers())
-                .subscribe(new DefaultObserver<Object>(this) {
-                    @Override
-                    protected void doOnNext(Object o) {
-                        LogUtils.e(TAG, "o:" + o.toString());
-                    }
-                });
+
     }
 
     private void test1() {

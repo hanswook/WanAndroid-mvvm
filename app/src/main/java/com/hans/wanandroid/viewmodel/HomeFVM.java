@@ -11,14 +11,16 @@ import com.hans.wanandroid.adapter.MvvmCommonAdapter;
 import com.hans.wanandroid.databinding.FragmentHomeBinding;
 import com.hans.wanandroid.libpack.BaseVM;
 import com.hans.wanandroid.libpack.RetrofitManager;
-import com.hans.wanandroid.model.mock.MockUser;
 import com.hans.wanandroid.model.pojo.ArticleBean;
+import com.hans.wanandroid.model.pojo.BannerBean;
 import com.hans.wanandroid.model.pojo.DataBean;
 import com.hans.wanandroid.model.pojo.ResponseBean;
 import com.hans.wanandroid.net.WanApi;
 import com.hans.wanandroid.utils.RxUtils;
+import com.hans.wanandroid.viewmodel.itemvm.BannerItemVM;
 import com.hans.wanandroid.viewmodel.itemvm.CardItemVM;
 import com.njqg.orchard.library_core.net.CommonSubscriber;
+import com.njqg.orchard.library_core.net.DefaultObserver;
 import com.njqg.orchard.library_core.utils.LogUtils;
 
 import java.util.ArrayList;
@@ -32,7 +34,9 @@ import java.util.List;
 
 public class HomeFVM extends BaseVM<FragmentHomeBinding> {
     private List<CardItemVM> datas;
+    private List<BannerItemVM> bannerDatas;
     private MvvmCommonAdapter commonAdapter;
+    private CommentPagerAdapter<BannerItemVM> commentPagerAdapter;
     int previousPosition = 0;
 
     public HomeFVM(Context context, FragmentHomeBinding viewBinding) {
@@ -46,9 +50,29 @@ public class HomeFVM extends BaseVM<FragmentHomeBinding> {
                 , datas, R.layout.card_item_layout, BR.cardItemVM);
         viewBinding.homefRecy.setAdapter(commonAdapter);
         viewBinding.homefRecy.setLayoutManager(new LinearLayoutManager(context));
-//        initViewPager();
         initRecyclerData();
+        initViewPagerData();
+    }
 
+    private void initViewPagerData() {
+        RetrofitManager.getInstance().create(WanApi.class)
+                .getBannerList()
+                .compose(RxUtils.<ResponseBean<List<BannerBean>>>applySchedulers())
+                .subscribe(new DefaultObserver<ResponseBean<List<BannerBean>>>(baseImpl) {
+                    @Override
+                    protected void doOnNext(ResponseBean<List<BannerBean>> listResponseBean) {
+
+                        if (isEmpty(listResponseBean) || isEmpty(listResponseBean.getData())) {
+                            return;
+                        }
+                        LogUtils.e(TAG, "listResponseBean.size:" + listResponseBean.getData().size());
+                        for (BannerBean bannerBean : listResponseBean.getData()) {
+                            bannerDatas.add(new BannerItemVM(bannerBean));
+                        }
+                        initViewPager();
+                        commentPagerAdapter.notifyDataSetChanged();
+                    }
+                });
     }
 
     private void initRecyclerData() {
@@ -57,12 +81,7 @@ public class HomeFVM extends BaseVM<FragmentHomeBinding> {
 
 
     private void initViewPager() {
-        List<MockUser> mockUsers = new ArrayList<>();
-        mockUsers.add(new MockUser("ABC", 28, true));
-        mockUsers.add(new MockUser("亿人", 34, true));
-        mockUsers.add(new MockUser("兵人", 12, true));
-        mockUsers.add(new MockUser("钉人", 233, true));
-        CommentPagerAdapter<MockUser> commentPagerAdapter = new CommentPagerAdapter<>(mockUsers, R.layout.banner_item_layout, BR.mu);
+        commentPagerAdapter = new CommentPagerAdapter<>(bannerDatas, R.layout.banner_item_layout, BR.bannerItemVM);
         viewBinding.homefBannerViewpager.setAdapter(commentPagerAdapter);
         viewBinding.homefBannerViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -85,7 +104,7 @@ public class HomeFVM extends BaseVM<FragmentHomeBinding> {
 
     private void initData() {
         datas = new ArrayList<>();
-
+        bannerDatas = new ArrayList<>();
     }
 
     public void show() {

@@ -42,14 +42,17 @@ public class CommentPagerAdapter<D> extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View view = pool.acquire();
-        if (view == null) {
-            view = DataBindingUtil.inflate(LayoutInflater.from(container.getContext()), layoutId, container, false).getRoot();
+        if (list.size() > 0) {
+            View view = pool.acquire();
+            if (view == null) {
+                view = DataBindingUtil.inflate(LayoutInflater.from(container.getContext()), layoutId, container, false).getRoot();
+            }
+            ViewDataBinding bind = DataBindingUtil.bind(view);
+            bind.setVariable(variableId, list.get(position % list.size()));
+            container.addView(view);
+            return view;
         }
-        ViewDataBinding bind = DataBindingUtil.bind(view);
-        bind.setVariable(variableId, list.get(position % list.size()));
-        container.addView(view);
-        return view;
+        return null;
     }
 
     @Override

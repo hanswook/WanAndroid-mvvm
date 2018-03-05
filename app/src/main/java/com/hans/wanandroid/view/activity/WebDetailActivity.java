@@ -51,6 +51,9 @@ public class WebDetailActivity extends BaseActivity<ActivityWebDetailBinding> {
         settings.setLoadsImagesAutomatically(true);
         settings.setBlockNetworkImage(false);
         settings.setDomStorageEnabled(true);
+        settings.setSupportZoom(true);
+        settings.setDisplayZoomControls(false);
+        settings.setBuiltInZoomControls(true);
 
         //开启缓存
         settings.setAppCacheEnabled(true);

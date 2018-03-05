@@ -19,7 +19,8 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends BaseLibAct
 
     @Override
     protected void initBindView() {
-        viewBinding= DataBindingUtil.setContentView(this,getLayoutId());
+        viewBinding = DataBindingUtil.setContentView(this, getLayoutId());
+        DataBindingUtil.setDefaultComponent(new WanComponent());
     }
 
 

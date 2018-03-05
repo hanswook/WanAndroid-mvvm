@@ -1,32 +1,34 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
-            name="mu"
-            type="com.hans.wanandroid.model.mock.MockUser" />
+            name="bannerItemVM"
+            type="com.hans.wanandroid.viewmodel.itemvm.BannerItemVM" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:orientation="vertical">
+        android:onClick="@{(v)->bannerItemVM.bannerItemClick(v)}">
+
+        <ImageView
+            android:id="@+id/banner_item_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:imageUrl="@{bannerItemVM.bannerBean.imagePath}" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:gravity="center_vertical"
-            android:text="@{mu.name}"
+            android:text="@{bannerItemVM.bannerBean.title}"
             android:textSize="23sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:text="@{String.valueOf(mu.age)}" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </layout>
