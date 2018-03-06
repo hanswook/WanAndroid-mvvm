@@ -26,7 +26,7 @@ public class ReceivedCookiesInterceptor implements Interceptor {
         if (!originalResponse.headers("Set-Cookie").isEmpty()) {
 
             for (String header : originalResponse.headers("Set-Cookie")) {
-                LogUtils.e("ReceivedCookiesInterceptor", "header:" + header);
+                LogUtils.d("ReceivedCookiesInterceptor", "header:" + header);
                 SPUtils.put(Constant.SP_NAME,header.split("=")[0],header);
                 cookies.add(header);
             }

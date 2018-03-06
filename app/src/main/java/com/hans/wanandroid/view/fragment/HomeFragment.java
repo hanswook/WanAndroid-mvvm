@@ -37,4 +37,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        viewBinding.homefBannerViewpager.requestFocus();
+    }
 }

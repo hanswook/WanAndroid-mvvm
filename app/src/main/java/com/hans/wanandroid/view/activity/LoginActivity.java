@@ -22,4 +22,9 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding> {
     public int getLayoutId() {
         return R.layout.activity_login;
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }

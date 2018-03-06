@@ -33,4 +33,11 @@ public class UserCenterFragment extends BaseFragment<FragmentUserCenterBinding> 
         userCenterFVM = new UserCenterFVM(context, viewBinding);
         viewBinding.setUserCenterFVM(userCenterFVM);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        userCenterFVM.refreshLoginStatus();
+
+    }
 }

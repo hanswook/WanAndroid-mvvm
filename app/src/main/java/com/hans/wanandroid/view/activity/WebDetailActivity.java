@@ -2,6 +2,7 @@ package com.hans.wanandroid.view.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -27,6 +28,16 @@ public class WebDetailActivity extends BaseActivity<ActivityWebDetailBinding> {
         initWebView();
         initWebViewSetting();
         initIntentData();
+        initAppbar();
+    }
+
+    private void initAppbar() {
+        viewBinding.tvReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
@@ -42,7 +53,13 @@ public class WebDetailActivity extends BaseActivity<ActivityWebDetailBinding> {
     private void initWebViewSetting() {
         WebSettings settings = webDetailView.getSettings();
 
-        webDetailView.setWebChromeClient(new WebChromeClient());
+        webDetailView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                viewBinding.tvTitle.setText(title);
+                super.onReceivedTitle(view, title);
+            }
+        });
         webDetailView.setWebViewClient(new WebViewClient());
 
         settings.setJavaScriptEnabled(true);
@@ -54,7 +71,6 @@ public class WebDetailActivity extends BaseActivity<ActivityWebDetailBinding> {
         settings.setSupportZoom(true);
         settings.setDisplayZoomControls(false);
         settings.setBuiltInZoomControls(true);
-
         //开启缓存
         settings.setAppCacheEnabled(true);
         settings.setDatabaseEnabled(true);
@@ -67,7 +83,7 @@ public class WebDetailActivity extends BaseActivity<ActivityWebDetailBinding> {
         webDetailView = new WebView(getApplicationContext());
         webDetailView.setLayoutParams(params);
         webDetailView.setInitialScale(100);
-        viewBinding.webDetailLlayout.addView(webDetailView);
+        viewBinding.webviewContainer.addView(webDetailView);
 
     }
 

@@ -15,31 +15,71 @@
     </data>
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="@string/login_text_account"
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/login_edittext_account"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="@string/login_hint_account"
+                android:text="@={lm.account}" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="@string/login_text_password"
+                android:textSize="25sp" />
+            <EditText
+                android:id="@+id/login_edittext_password"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="@string/login_hint_password"
+                android:inputType="textPassword"
+                android:text="@={lm.password}"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="159dp" />
+        </LinearLayout>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="420dp"
+            android:background="@color/a88_blue"
             android:onClick="@{()->lvm.show()}"
-            android:text="show account password" />
+            android:paddingBottom="20dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingTop="20dp"
+            android:text="@string/login_btn_click"
+            android:textSize="30sp" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="@={lm.account}" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:inputType="textPassword"
-            android:text="@={lm.password}"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="159dp" />
-
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </layout>

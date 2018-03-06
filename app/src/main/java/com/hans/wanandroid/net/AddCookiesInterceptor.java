@@ -34,7 +34,7 @@ public class AddCookiesInterceptor implements Interceptor {
         for (String cookie : cookies) {
             if (cookie != null && !cookie.equalsIgnoreCase("")) {
                 builder.addHeader("Cookie", cookie);
-                LogUtils.e("OkHttp", "Adding Header: " + cookie); // This is done so I know which headers are being added; this interceptor is used after the normal logging of OkHttp
+                LogUtils.d("AddCookiesInterceptor", "Adding Header: " + cookie); // This is done so I know which headers are being added; this interceptor is used after the normal logging of OkHttp
             }
         }
 
