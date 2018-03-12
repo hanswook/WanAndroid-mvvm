@@ -68,7 +68,6 @@ public class ArticlesFVM extends BaseVM<FragmentArticlesBinding> {
                             return;
                         }
                         articlesData.addAll(listResponseBean.getData());
-                        listResponseBean.getData().size();
                         initPrimaryTabLayout(listResponseBean.getData());
 //                        initSecondTabLayout(listResponseBean.getData().get(0).getChildren());
 //                        initRecyclerData(listResponseBean.getData().get(0).getChildren().get(0));
