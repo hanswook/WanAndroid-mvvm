@@ -21,9 +21,12 @@
             app:imageUrl="@{bannerItemVM.bannerBean.imagePath}" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/white"
+            android:background="@color/a88_gray"
             android:text="@{bannerItemVM.bannerBean.title}"
             android:textSize="23sp"
             android:textStyle="bold" />

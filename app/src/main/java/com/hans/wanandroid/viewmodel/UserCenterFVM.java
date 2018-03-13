@@ -63,7 +63,7 @@ public class UserCenterFVM extends BaseVM<FragmentUserCenterBinding> {
 
     public void login() {
         if (Constant.isLogin) {
-            SPUtils.clear(Constant.SP_NAME);
+            SPUtils.clear();
             Constant.isLogin = false;
             loginStatusBean.setLoginStatus(Constant.isLogin);
         } else {

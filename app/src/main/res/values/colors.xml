@@ -6,6 +6,7 @@
 
 
     <color name="a88_blue">#880000ff</color>
+    <color name="a88_gray">#88888888</color>
     <color name="a88_red">#88ff0000</color>
     <color name="a88_green">#8800ff00</color>
     <color name="a88_yellow">#88ffff00</color>
