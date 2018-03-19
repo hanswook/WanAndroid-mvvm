@@ -43,7 +43,7 @@ public class RetrofitManager {
                 .addInterceptor(new AddCookiesInterceptor())  //cookies添加
                 .addInterceptor(new ReceivedCookiesInterceptor()) // cookies获取
                 .addInterceptor(new HttpLoggingInterceptor()) //日志,所有的请求响应度看到
-                .cache(cache)  //添加缓存
+//                .cache(cache)  //添加缓存
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(20, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)

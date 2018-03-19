@@ -13,7 +13,7 @@ import java.io.File;
 public class Constant {
     public static String BASE_URL = "http://www.wanandroid.com";  //gank
 
-    public static String PATH_CACHE = Environment.getExternalStorageDirectory().getPath() + File.separator + "orchard";
+    public static String PATH_CACHE = Environment.getExternalStorageDirectory().getPath() + File.separator + "hans";
 
     public static final String SP_NAME = "hans_wanandroid";
     public static final String WEB_DETAIL_URL = "web_detail_url";
