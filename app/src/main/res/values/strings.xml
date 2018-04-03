@@ -9,6 +9,7 @@
     <string name="item_space">&#160;&#160;&#160;</string>
     <string name="item_narrow_space">&#8201;</string>
     <string name="item_placeholder">%1$s,%1$d</string>
+    <string name="bannercount_placeholder">%1$s/%2$s</string>
 
     <string name="tab_left">&#xe620; </string> <!--左对齐-->
     <string name="tab_right">&#xe618; </string> <!--右对齐-->

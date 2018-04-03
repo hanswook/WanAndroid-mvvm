@@ -141,7 +141,8 @@ public class HomeFVM extends BaseVM<FragmentHomeBinding> {
 
             @Override
             public void onPageSelected(int position) {
-                LogUtils.e(TAG, "onPageSelected position:" + position);
+                LogUtils.e(TAG, "onPageSelected posit2ion:" + position);
+                viewBinding.homefBannerCount.setText(String.format(context.getResources().getString(R.string.bannercount_placeholder), (position + 1) + "", bannerDatas.size() + ""));
             }
 
             @Override
@@ -149,6 +150,7 @@ public class HomeFVM extends BaseVM<FragmentHomeBinding> {
 
             }
         });
+        viewBinding.homefBannerCount.setText(String.format(context.getResources().getString(R.string.bannercount_placeholder), "1", bannerDatas.size() + ""));
 
     }
 
